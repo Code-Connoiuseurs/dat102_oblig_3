@@ -54,22 +54,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean erLik(MengdeADT<T> annenMengde) {
-		if (annenMengde == null && this.erTom()) {
-			return true;
-		} else if (annenMengde == null || antall != annenMengde.antallElementer()) {
-			return false;
-		}
-
-		Node temp = forste;
-		while (temp != null) {
-			if (!annenMengde.inneholder(temp.data)) {
-				return false;
-			}
-			temp = temp.neste;
-		}
-//		boolean lik = this.erDelmengdeAv(annenMengde);
-		return true;
-
+		return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
 	}
 
 	@Override
